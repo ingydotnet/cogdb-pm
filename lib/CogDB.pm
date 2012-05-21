@@ -8,17 +8,15 @@
 use 5.010;
 use strict;
 use warnings;
+use App::Cmd 0.313 ();
+use Convert::Base32::Crockford 0.11 ();
+use IO::All 0.44 ();
+use Mo 0.30 ();
+use Time::HiRes 0 ();
+use Digest::MD5 0 ();
 
 package CogDB;
 
-our $VERSION = '0.10';
+our $VERSION = '0.01';
 
 1;
-
-=head1 SYNOPSIS
-
-...
-
-=head1 DESCRIPTION
-
-...

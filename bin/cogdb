@@ -1,0 +1,4 @@
+#!/usr/bin/perl
+
+use CogDB::App;
+CogDB::App->run;
