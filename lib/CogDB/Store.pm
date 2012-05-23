@@ -38,7 +38,12 @@ sub add {
 }
 
 sub init {
-    # assert dir is new or empty
-    # create dirs
-    # git init
+    my ($self) = @_;
+    die "Can't init in non-empty directory $ENV{PWD}"
+        unless io('.')->empty;
+    mkdir 'node';
+    mkdir 'index';
+    mkdir 'index/Name';
+    mkdir 'index/Schema';
+    system('git init') == 0 or die;
 }
