@@ -1,6 +1,6 @@
 ##
 # name:      CogDB
-# abstract:  A Thoughtful Data Store
+# abstract:  The Thoughtful Data Store
 # author:    Ingy döt Net <ingy@cpan.org>
 # license:   perl
 # copyright: 2012
