@@ -22,6 +22,7 @@ package CogDB::Command::init;
 CogDB::App->import(-command);
 use Mo;
 extends 'CogDB::Command';
+use XXX;
 
 use constant abstract => 'Initialize a new CogDB data store';
 use constant usage_desc => 'cogdb init';

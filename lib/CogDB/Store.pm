@@ -36,3 +36,9 @@ sub add {
     return $id;
 #     tt->render(\$template, $data);
 }
+
+sub init {
+    # assert dir is new or empty
+    # create dirs
+    # git init
+}

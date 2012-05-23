@@ -1,0 +1,50 @@
+CogDB is an attempt to get all of the data in your life to be DRY and reusable, and consumable and mutable from the various apps that you will come into contact with in your daily life.
+
+This let's you get your thoughts out of your head, and out into the internet. You have lots of good ideas but it is a waste of time to recalcuate them in every situation, when you can just say "See A4GT".
+
+Also you enter the same todo item into all of these different one way tools. Your cogs (pieces of thought) should be in one canonical place and reused everywhere.
+
+Cog nodes are revisioned data. Like wiki pages. You can reference *A4GT for the most recent or *A4GT-17, for revision #17.
+
+This all sounds a bit yagni? Well I want CogDB as the basis for the minimally the following real things:
+
+* My wikis
+* My blogs
+* My todo cards
+* My contact info
+* My calendar info
+
+One way to starti discussing CogDB is to list basic assertions about it:
+
+* A "cogdb" is a data "store"
+* A cogdb consists of "node"s
+* Every node has a UUID like 9N3M-LH7ZPV2PDP5VPR2W8VD3N
+  * 9N3M is the short "id"
+  * 9N3M-LH7ZPV2PDP5VPR2W8VD3N is the full id
+  * THe short id is unique to the cogdb, and the full id is unique to the universe.
+* Every node has a "type". Like "blog-post" or "wiki-page" or "card".
+* Every type has a "schema". A schema is a machine readble document describing all the properties of the type.
+* Every schema is stored in the cogdb as a node of type "Schema".
+* The Schema type's Schema is hardcoded into CogDB.
+* A cogdb is exposed via REST
+* Every node has a URI
+* Every type inherits from another type
+* The base type is "Node"
+* The base type is "CogNode"
+
+Node Schema:
+
+  Id: ID
+  Type: TYPE
+  Base: ~
+  Time: <secs>
+  User: <id>
+
+CogNode Schema:
+
+  Type: CogNode
+  Base: Node
+  Tags: TAG*
+  Urls: URL*
+  Src: COGURL
+

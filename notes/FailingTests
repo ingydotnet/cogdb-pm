@@ -1,0 +1,33 @@
+%TesML 1.0
+
+=== 'cogdb init' works
+--- command: cog init
+--- manifest
+.git/
+node/
+index/
+index/schema/
+
+=== 'cogdb new <type>' works
+--- command: cog new Schema
+
+
+
+
+=== Basic Usage
+> cogdb init foo-cog
+> cd foo-cog
+> cog add Schema
+Node *a4gh-0 type(Schema) added
+.0 revision is a placeholder node. id has been secured.
+> cog edit a4gh
+.enter vim with a text representation of the node
+.user sets Type to 'foo'
+.user sets Base to 'CogNode'
+.user adds fields for 'foo' type
+.on save adds to cogdb
+> cog add foo
+Node *7ud3 type(foo) added
+.cogdb will not allow you to add type 'bar' since schema doesn't exist yet
+
+Questions?
