@@ -1,5 +1,8 @@
 use Test::More;
 use CogDB::Store::Git;
+use XXX;
+
+$ENV{COGDB_TEST_MODE} = 1;
 
 my $path = './foo-cog';
 -e $path and system "rm -r $path";
@@ -7,17 +10,15 @@ my $class = CogDB::Store::Git;
 ok not($class->exists($path)), 'not exists';
 ok $class->init($path), 'init';
 ok $class->exists($path), 'now exists';
-pass;done_testing;exit 0; #-------------------------------------------
 
 my $store = CogDB::Store::Git->new(root => './foo-cog');
-is ref($store), 'CogDB::Store',
-    "Store object is generic";
-
+eval { $store->add('myType') }; ok $@, "Only CogNodes, for now.";
 my $node = $store->add('CogNode');
-is $node->Rev, 0, 'Rev';
-is $node->Time, 0, 'Time';
+is $node->Rev, 0, 'Rev 0';
+is $node->Time, undef, 'Time undef';
 my $id = $node->Id;
-like $id, qr/^\d{4}-\d{475}$/, 'Id pattern';
+my $crockford_set = '0-9A-HJKMNP-Z';
+like $id, qr/^[$crockford_set]{4}$/, 'Id pattern';
 my $body = <<'...';
 I'm here.
 Can you not see this?
@@ -27,7 +28,9 @@ $store->put($node);
 
 my $store2 = $store->get($id);
 is $store2->Body, $body, 'Body retrieve';
-is_not $node->Time, 0, 'Time update';
+ok $node->Time != 0, 'Time update';
 is $node->Rev, 1, 'Rev bump';
 
-plan;
+done_testing;
+
+-e $path and system "rm -r $path";

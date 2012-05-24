@@ -9,7 +9,7 @@ use 5.010;
 use strict;
 use warnings;
 use App::Cmd::Setup ();
-use CogDB::Store ();
+use CogDB::Store::Git ();
 
 package CogDB::App;
 App::Cmd::Setup->import(-app);
@@ -22,7 +22,6 @@ package CogDB::Command::init;
 CogDB::App->import(-command);
 use Mo;
 extends 'CogDB::Command';
-use XXX;
 
 use constant abstract => 'Initialize a new CogDB data store';
 use constant usage_desc => 'cogdb init';
@@ -32,7 +31,7 @@ use constant usage_desc => 'cogdb init';
 
 sub execute {
     my ($self, $opts, $args) = @_;
-    CogDB::Store->init();
+    CogDB::Store::Git->init('.');
 }
 
 #------------------------------------------------------------------------------#

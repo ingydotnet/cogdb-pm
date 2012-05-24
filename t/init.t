@@ -28,8 +28,8 @@ test(*command, *manifest);
 === Init command
 --- command: cogdb init
 --- manifest
-.git
 node
-index
-index/Name
-index/Schema
+# .git
+# index
+# index/Name
+# index/Schema

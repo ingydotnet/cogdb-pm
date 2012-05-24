@@ -7,10 +7,11 @@
 
 package CogDB::CogNode;
 use Mo;
+use CogDB::Node;
 extends 'CogDB::Node';
 
-has Tags => (default => sub { [] });
-has Urls => (default => sub { [] });
+has Tag => (default => sub { [] });
+has Url => (default => sub { [] });
 has Body => ();
 
 1;

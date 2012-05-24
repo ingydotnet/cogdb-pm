@@ -5,6 +5,7 @@ use File::Path;
 
 my $test_dir;
 BEGIN {
+    $ENV{COGDB_TEST_MODE} = 1;
     $test_dir = Cwd::abs_path('test-cog');
     File::Path::rmtree($test_dir) if -d $test_dir;
     mkdir $test_dir;
