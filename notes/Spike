@@ -1,0 +1,29 @@
+Goals:
+
+- Have a pairup-rkingy-cards.cogdb
+
+Concepts:
+
+- Driving towards 3 UI-s:
+  - Pro gramatic
+  - REST
+  - CLI
+
+- Basic Actions
+  - Create CogDB
+  - Create new node (type CogNode for now)
+  - Put node (in cog format)
+  - Get by id
+  - Get by name
+  - Search by time (recent changes)
+
+Tasks:
+
+- Pro create cogdb
+- Pro new node
+- Pro put node
+- Pro get node
+- CLI uses Pro UI
+- CLI does all of above
+- CLI edit node
+

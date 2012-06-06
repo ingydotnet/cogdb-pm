@@ -8,7 +8,7 @@ use CogDB::CogNode;
 
 use IO::All;
 
-has root_dir => (default => sub { $ENV{COGDB_ROOT_DIR} || '.' });
+has root_dir => (default => sub { $ENV{COGDB_DIR} || '.' });
 
 # Concept of open vs close is yag for now
 # has _opened => (default => sub {0});
@@ -30,7 +30,18 @@ sub init {
         if not -e $root;
     die "Can't init in non-empty directory $ENV{PWD}"
         unless io($root)->empty;
+    io("$root/cogdb")->mkdir or die;
     io("$root/node")->mkdir or die;
+    io("$root/index")->mkdir or die;
+    $ENV{GIT_DIR} = "$root/.git";
+    $ENV{GIT_WORK_TREE} = $root;
+    system("git init > /dev/null");
+    my $cogdb_id = $self->new_id(25);
+    my $time = time;
+    io("$root/cogdb/conf.yaml")->print(<<"...");
+Id: $cogdb_id
+Time: $time
+...
     return 1;
 }
 

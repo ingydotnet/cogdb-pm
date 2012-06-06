@@ -11,10 +11,11 @@ use Mo qw'default';
 use YAML::XS ();
 use JSON::XS ();
 
-has Type => ();
 has Id => ();
 has Rev => (default => sub { 0 });
+has Type => ();
 has Time => ();
+has User => ();
 
 # TODO this needs to be a bit more Schema driven
 sub from_cog {
@@ -42,7 +43,7 @@ use XXX;
 
 my $i = 1;
 my $key_order = do {
-    +{ map {($_, $i++) } qw(Type Id Rev Time) };
+    +{ map {($_, $i++) } qw(Id Rev Type User Time) };
 };
 $key_order->{Body} = 999999;
 sub to_cog {
